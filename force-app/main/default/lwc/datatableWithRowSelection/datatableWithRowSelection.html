@@ -1,0 +1,15 @@
+<template>
+    <lightning-button variant="brand" label={showContact} onclick={handleClick}></lightning-button>
+    <template if:true={showCard}>
+        <lightning-card title="Related Contact">
+            <lightning-input type="search" onchange={handleSearch} value={searchKey} label="Search"></lightning-input>
+            <lightning-datatable key-field="Id" 
+                            data={data} 
+                            columns={columns} 
+                            onrowselection={onrowselection}>
+            </lightning-datatable>
+        </lightning-card>
+    </template>
+    
+    
+</template>

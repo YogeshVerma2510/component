@@ -1,0 +1,8 @@
+.myButtonHook{
+    --sds-c-button-brand-color-background : orange;
+    --sds-c-button-brand-color-border : orange;
+}
+.myBadgeHook{
+    --sds-c-badge-color-background : green;
+    --sds-c-badge-color-text : white;
+}

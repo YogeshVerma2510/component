@@ -1,0 +1,7 @@
+.list-first{
+    border-top: 1px solid black;
+    padding: auto;
+}
+.list-last{
+    border-bottom: 2px solid green;
+}

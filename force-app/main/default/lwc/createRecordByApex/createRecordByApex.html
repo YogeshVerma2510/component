@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Create Account" icon-name="utility:einstein">
+        <div class="slds-m-around_large">
+            <lightning-input label="Id" disabled value={accountId}></lightning-input>
+            <lightning-input label="Name" onchange={handleAccountName}></lightning-input>
+            <lightning-input label="Select Industries"  onchange={handleAccountIndustry}></lightning-input>
+            <br>
+            <lightning-button label="Create Account" variant="brand" onclick={createAccountRecord}></lightning-button>
+        </div>
+    </lightning-card>
+    
+</template>

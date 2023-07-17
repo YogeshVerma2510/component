@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Conditional Statement">
+        <lightning-button variant={variant} label={label} onclick={handleClick}></lightning-button>
+    </lightning-card>
+    <template if:true={showCard}>
+        <lightning-card title="Inside Conditon">
+           <p><b>Hello by Yogesh..</b></p>
+        </lightning-card>
+    </template> 
+</template>

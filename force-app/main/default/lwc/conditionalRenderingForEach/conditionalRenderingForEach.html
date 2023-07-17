@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Render Using ForEach Loop">
+        <ul class="slds-m-around_medium">
+            <template for:each={contacts.data} for:item="contact">
+                <li key={contact.Id}>
+                    {contact.Name} , {contact.Id}
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+    
+</template>

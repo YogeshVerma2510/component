@@ -1,0 +1,169 @@
+<template>
+    <lightning-card title="Assignee">
+        <!--<p class="slds-p-left_medium slds-text-body_medium" style="font-size:16px; padding-left:15px;">
+                <b> Assignee</b></span></p>-->
+                <!--<div class="slds-col slds-p-left_small" style="margin-left: 33%; margin-top: -6%;">-->
+                    
+            <!-- <div style="margin-top: -46%; margin-left: 35%;"></div> -->
+
+            <div slot="actions">
+                <lightning-button variant="neutral" onclick={handleRemove} label="Remove Assignee" disabled={RemoveButton}></lightning-button>
+                &nbsp;
+                <!-- <div class="slds-" style="margin-left: 70%;">  -->
+                <lightning-button  variant="neutral" onclick={open} label="Add Assignee" ></lightning-button>
+            </div>
+        <template if:true={modal}>
+
+            <section
+            role="dialog"
+            tabindex="-1"
+            aria-labelledby="modal-heading-01"
+            aria-modal="true"
+            aria-describedby="modal-content-id-1"
+            class="slds-modal slds-fade-in-open"
+        >
+            <div class="slds-modal__container slds-p-around_x-small">
+            <!-- Popup Header -->
+            <header class="slds-modal__header" style=width:70%;>
+                <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                  onclick={close}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+                  </lightning-icon>
+                  <span class="slds-assistive-text">Close</span>
+                </button> -->
+                <h1 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="font-weight:bold"><strong>
+                 Add Assignee </strong>
+                </h1>
+              </header>
+        <!-- Popup body starts here -->
+        <!-- <div class="slds-grid slds-gutters slds-m-horizontal-large slds-m-bottom_medium">
+            <div class="slds-col slds-size_1-of-2 slds-form-element__control"
+        style="padding-bottom: 20px; padding-right: 20px; font-weight: normal;"> -->
+        <div class="slds-modal__content slds-p-around_medium"  style="width:70%;height:28%">
+            <div>
+
+            <!-- <div class="slds-col"> -->
+                <legend class="slds-form-element_legend slds-form-element_label slds-float_left"
+                    style="color: #1b1b1b; text-align: center; width: 100%">
+                    <em style="color: red;"> *</em> Assignee &nbsp;
+                </legend>
+                
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container" aria-expanded="true" aria-haspopup="listbox"
+                        role="combobox">
+                        <div
+                            class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+
+                            <template if:false={isValueSelected}>
+                                <div class="slds-p-top_none">
+                                    <lightning-input type="search" value={searchTerm}
+                                        onchange={onChange} variant="label-hidden" required
+                                        class="requiredfield resetfields"
+                                        message-when-value-missing="Please Select a User"
+                                        autocomplete="off" placeholder="Search Users.." 
+                                        style="width: 396px;
+                                        ">
+                                    </lightning-input>
+                                    <div if:true={showSpinner}>
+                                        <lightning-spinner alternative-text="Loading" size="small">
+                                        </lightning-spinner>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template if:true={isValueSelected}>
+                                <div class="slds-pill_container">
+                                    <lightning-pill class="pillSize" label={assigneeName}
+                                        name={assigneeName} onremove={handleRemovePill}>
+                                        <lightning-icon icon-name="standard:avatar"
+                                            alternative-text="pillicon"></lightning-icon>
+                                    </lightning-pill>
+                                </div>
+                            </template>
+
+                            <template if:true={showDropDown}>
+                                <div
+                                    class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid scroll-1">
+                                    <ul class="slds-listbox slds-listbox_vertical recordListBox">
+                                        <template if:false={message}>
+                                            <template for:each={UserList} for:item="user">
+                                                <li key={user.Id} class="slds-listbox__item"
+                                                    onclick={onSelect} data-id={user.Id}
+                                                    role="presentation" data-name={user.Name}>
+                                                    <div aria-selected="true" id={user.Id}
+                                                        class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                        role="option" tabindex="0">
+                                                        <span class="slds-media__figure">
+                                                            <span
+                                                                class="slds-icon_container slds-icon-standard-avatar">
+                                                                <lightning-icon
+                                                                    icon-name="standard:avatar"
+                                                                    size="small"></lightning-icon>
+                                                            </span>
+                                                        </span>
+                                                        <span class="slds-media__body">
+                                                            <span
+                                                                class="slds-listbox__option-text slds-listbox__option-text_entity">{user.Name}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </template>
+                                        <template if:true={message}>
+                                            <li class="slds-listbox__item">
+                                                <span
+                                                    class="slds-media slds-listbox__option_entity">{message}</span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </template>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+         
+              <footer class="slds-modal__footer" style=width:70%;>
+                <div class="slds-align_absolute-center">
+                    <button class="slds-button slds-button_brand" onclick={close} title="Cancel">
+                        Cancel
+                    </button>
+                    <button class="slds-button slds-button_brand" onclick={saveClick} title="Save">
+                        Save
+                    </button>
+                    </div>
+              </footer>
+            </div>
+            
+          </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+
+        </template>
+        <!-- <div class="slds-form-element__static"> -->
+      <br>
+        <template for:each={results} for:item="items"> 
+            <!--<a key={items.id}  href={items.projectdetails} onclick={viewTabledata1} value={items.id}  data-id={items.id}>{items.Assignee}</a><br key={items.id}>-->
+            <tr key={items.Id}>
+            <td>
+                <div class="slds-p-left_small">
+                    <!-- <input type="checkbox" name="options" value="checkbox-unique-id-297" /> -->
+                    <lightning-input type="checkbox" name={items.name} data-my-id="checkboxes" data-value={items.id} data-recid={items.RequirementId} data-id={items.id}
+                    data-recordid={items.id} onclick={handleCheckbox} key={item.id}  ></lightning-input>
+
+                </div>
+            </td>
+        
+            <td key={items.Id}>
+                <a key={items.id}  href={items.projectdetails} onclick={viewTabledata1} value={items.id} data-id={items.id}>{items.Assignee}</a><br key={items.id}>
+            </td> 
+        </tr>
+
+        </template>
+        <!-- </div> -->
+    </lightning-card>
+</template>

@@ -1,0 +1,115 @@
+<template>
+    <!-- <lightning-card title="Affected Item"> -->
+        <!-- <div class="slds-m-around_medium"> -->
+
+    <!-- <div class="slds-form-element"> -->
+        <!-- <label class="slds-form-element__label" for="form-element-03">
+            <abbr class="slds-required" title="required">* </abbr>Associated Item</label> -->
+            <!-- <div class="slds-grid">
+
+            <div class="slds-col slds-p-right_small">
+                <button class="slds-button slds-button_neutral " data-id="save"
+                 slot="actions" title="Cancel" onclick={save}
+                    >
+                    Save
+                </button>
+            </div>
+            <div class="slds-col slds-p-right_small ">
+                <button class="slds-button slds-button_brand " data-id="cancel"
+                     slot="actions" title="Cancel" onclick={cancel}
+                    >
+                    Cancel
+                </button>
+            </div>
+            </div> -->
+            <!-- <div slot="actions">
+                <lightning-button variant="brand" onclick={handleSave} label="Save"></lightning-button>
+                &nbsp;
+                <lightning-button  variant="neutral" onclick={cancel} label="Cancel" ></lightning-button>
+            </div> -->
+            
+            <!-- <div class="slds-col slds-form-element slds-p-right_xx-small slds-p-left_x-small"> -->
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_2-of-4">
+                        <lightning-combobox
+                            name="Department"
+                            label="Department"
+                            value={DepartmentValue}
+                            options={DepartmentOptions}
+                            class='requiredField DepandentField'
+                            message-when-value-missing="Please select Department"
+                            onchange={handleChange} >
+                        </lightning-combobox>
+                    </div> 
+                    <div class="slds-col slds-size_2-of-4">
+                        <label class="slds-form-element__label" for="form-element-03">
+                        <abbr class="slds-required" title="required"></abbr>Associated Item</label>
+                        <div class="slds-combobox_container" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                            <div id="box" class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" >
+                                <template if:false={isValueSelected}>
+                                    <div class="slds-p-top_none">
+                                        <lightning-input id="form-element-03"  type="search"  value={searchTerm}
+                                            onchange={onChange}
+                                            variant="label-hidden" required 
+                                            class='requiredField' 
+                                            message-when-value-missing="Please Select the Item" 
+                                            autocomplete="off" 
+                                            placeholder="Search Associated Items"
+                                        >
+                                        </lightning-input>
+                                        <div if:true={showSpinner}>
+                                            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template if:true={isValueSelected}>
+                                    <div id="lookup-pill" class="slds-pill_container">
+                                        <lightning-pill class="pillSize" label={selectedName} name={selectedName} onremove={handleRemovePill} >
+                                            <lightning-icon icon-name="standard:brand" alternative-text="pillicon" ></lightning-icon>
+                                        </lightning-pill>
+                                    </div>
+                                </template>                       
+                                <template if:true={showDropDown}>
+                                    <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid scroll-1" >
+                                        <ul class="slds-listbox slds-listbox_vertical recordListBox" >
+                                            <template if:false={message} >
+                                                <template for:each={AssociatedItemList} for:item="associatedItem">
+                                                    <li key={associatedItem.Id} class="slds-listbox__item" onclick={onSelect} 
+                                                        data-id={associatedItem.Id} role="presentation" 
+                                                        data-name={associatedItem.Title}
+                                                        data-objectname={associatedItem.ObjName}>
+                                                        <div aria-selected="true" id={associatedItem.Id}
+                                                            class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                            role="option" tabindex="0">
+                                                            <span class="slds-media__body">
+                                                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">{associatedItem.Title}</span>
+                                                                <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{associatedItem.RNumber}</span>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </template>
+                                            <template if:true={message} >
+                                                <li class="slds-listbox__item">
+                                                    <span class="slds-media slds-listbox__option_entity">{message}</span>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            <!-- &nbsp; -->
+        <!-- <div class="slds-form-element__control"> -->
+            <!-- <div class="slds-float_right"> -->
+            <!-- <div class="slds-col slds-form-element slds-p-left_xx-small slds-p-right_x-small"> -->
+                
+    <!-- </div> -->
+    <!-- </div> -->
+<!-- </div>
+</div> -->
+    <!-- </lightning-card> -->
+</template>

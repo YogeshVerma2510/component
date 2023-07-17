@@ -1,0 +1,49 @@
+<template>
+    <template if:true={expand}>
+        <div class="slds-section slds-is-open">
+            <h3 class="slds-section__title">
+                <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action" onclick={sectionVisibility}>
+                    <lightning-icon icon-name="utility:chevrondown" size="xx-small"  alternative-text="Utility image" title="Image"></lightning-icon>
+                    <span style="margin-left: 10px;" class="slds-truncate" title="Section Title">Affected Items</span>
+                </button>
+            </h3>
+            <div aria-hidden="false" class="slds-section__content" id="expando-unique-id">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_2-of-4">
+                        <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent" style="margin-left: 13px;">
+                            <span class="slds-form-element__label" style="font-weight: normal; font-size: var(--lwc-fontSize3,0.8125rem); ">Affected Items</span>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">
+                                    <template for:each={results} for:item="items"> <a key={items.id}  href={items.projectdetails} onclick={viewTabledata1} value={items.id}  data-id={items.id}>{items.Name}</a><br key={items.id}><!--</input>--></template>
+                                </div>              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_2-of-4">
+                        <div class="slds-form-element slds-form-element_readonly">
+                            <span class="slds-form-element__label">Department</span>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">
+                                    <template for:each={results} for:item="items">{items.Department}</template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </template>
+          <template if:true={collapse}>
+            <div class="slds-section">
+              <h3 class="slds-section__title">
+                <button aria-controls="expando-unique-id" aria-expanded="false" class="slds-button slds-section__title-action" onclick={sectionVisibility2}>
+                  <lightning-icon icon-name="utility:chevronright" size="xx-small"  alternative-text="Utility image" title="Image"></lightning-icon>
+                  <span style="margin-left: 10px;" class="slds-truncate" title="Section Title">Affected Items</span>
+                </button>
+              </h3>
+              <div aria-hidden="true" class="slds-section__content">
+                <p>Blank(emplty)</p>
+              </div>
+            </div>
+          </template>
+  </template>

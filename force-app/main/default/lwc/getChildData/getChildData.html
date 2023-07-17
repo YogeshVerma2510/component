@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Related Contacts and Opportunity">
+        <lightning-button label={buttonLabel} variant="brand" onclick={handleClick}></lightning-button>
+        <template if:true={showData}>
+            <!-- Show Opportunity Data -->
+            <lightning-datatable key-field="Id"
+                                 data={oppData}
+                                 columns={columns1}
+                                 hide-checkbox-column>
+            </lightning-datatable>
+
+            <!-- Show Contacts Data -->
+            <lightning-datatable key-field="Id"
+                                 data={ConData}
+                                 columns={columns2}
+                                 hide-checkbox-column>
+            </lightning-datatable>
+
+
+
+
+
+        </template>
+
+                        
+
+
+
+    </lightning-card>
+    
+</template>

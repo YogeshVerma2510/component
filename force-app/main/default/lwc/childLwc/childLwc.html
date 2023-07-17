@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Child LWC" icon-name="action:upload">
+        <lightning-button class="slds-p-horizontal_medium"
+                          icon-name="utility:dash"
+                          onclick={handleSubtract}
+                          label="Subtract">
+        </lightning-button>
+        <lightning-button class="slds-p-horizontal_medium"
+                          icon-name="utility:add"
+                          onclick={handleAdd}
+                          label="Add">
+        </lightning-button>
+        <lightning-button label="2"
+                          icon-name="utility:close"
+                          onclick={handleMultiply}
+                          value = "2">
+        </lightning-button>
+        <lightning-button label="10"
+                          icon-name="utility:close"
+                          onclick={handleMultiply}
+                          value="10">
+        </lightning-button>
+    </lightning-card>
+
+    
+</template>
